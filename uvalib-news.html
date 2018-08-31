@@ -24,13 +24,13 @@
           color: var(--uvalib-news-item-color, inherit);
         }
         .card-news-source {
-          padding-bottom: calc(var(--uvalib-spacing-unit)/3);
+          /* padding-bottom: calc(var(--uvalib-spacing-unit)/3); */
           text-transform: capitalize;
           @apply --uvalib-news-source;
           color: var(--uvalib-news-item-source-color, inherit);
         }
         .card-news-title {
-          padding-bottom: calc(var(--uvalib-spacing-unit)/3);
+          /* padding-bottom: calc(var(--uvalib-spacing-unit)/3); */
           font-size: 24px;
           font-weight: 400;
           line-height: 1.2;
@@ -42,15 +42,22 @@
         }
         .card-news-link, .card-share-link {
           width: 120px;
-          height: 20px;
+          /* height: 20px; */
           padding-top: calc(var(--uvalib-spacing-unit)*2);
-          padding-bottom: calc(var(--uvalib-spacing-unit)/3);
+          /* padding-bottom: calc(var(--uvalib-spacing-unit)/3); */
           text-transform: uppercase;
           @apply --uvalib-news-link;
         }
-        .card-news-link paper-button, .card-share-link paper-button {
+        /* .card-news-link paper-button, .card-share-link paper-button {
           border: none;
           padding: 0;
+        } */
+        paper-button {
+          background: white !important;
+          color: var(--uvalib-link-color);
+        }
+        paper-button span:hover {
+          text-decoration: underline;
         }
         .card-share-link {
           text-align: right;
@@ -60,12 +67,14 @@
     <uva-library path="news" items="{{news}}" filter="[[_filter]]"></uva-library>
     <template is="dom-repeat" items="[[news]]">
       <paper-card class="card-news-item">
-        <div class="card-news-source" hidden$="[[!item.source]]">[[item.source]]</div>
-        <div class="card-news-title" hidden$="[[!item.title]]">[[item.title]]</div>
-        <div class="card-news-copy" hidden$="[[!item.body]]" inner-h-t-m-l="[[item.body]]"></div>
-        <div class="horizontal justified layout">
-          <div class="card-news-link" hidden$="[[!item.link]]"><a href="[[item.link]]"><paper-button>Read More</paper-button></a></div>
-          <div class="card-share-link" hidden$="[[!item.link]]"><paper-button on-tap="_share" aria-label="Share"><iron-icon icon="share-alt"></iron-icon>&nbsp;share</paper-button></div>
+        <div class="layout vertical justified">
+          <div class="card-news-source" hidden$="[[!item.source]]">[[item.source]]</div>
+          <div class="card-news-title" hidden$="[[!item.title]]">[[item.title]]</div>
+          <div class="card-news-copy" hidden$="[[!item.body]]" inner-h-t-m-l="[[item.body]]"></div>
+          <div class="horizontal justified layout">
+            <div class="card-news-link" hidden$="[[!item.link]]"><a href="[[item.link]]" tabindex="-1"><paper-button raised ><span>Read More</span></paper-button></a></div>
+            <div class="card-share-link" hidden$="[[!item.link]]"><paper-button raised on-tap="_share" aria-label="Share"><iron-icon icon="share-alt"></iron-icon>&nbsp;<span>share</span></paper-button></div>
+          </div>
         </div>
         <share-menu id="shareMenu" title="[[item.title]]" text="[[item.body]" url="[[item.link]]" via="University of Virginia Library" is-image="auto" copy-success-text="Text copied to clipboard!" copy-failed-text="Oh no! Couldn't copy the text automatically."></share-menu>
       </paper-card>
