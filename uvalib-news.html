@@ -72,8 +72,8 @@
           <div class="card-news-title" hidden$="[[!item.title]]">[[item.title]]</div>
           <div class="card-news-copy" hidden$="[[!item.body]]" inner-h-t-m-l="[[item.body]]"></div>
           <div class="horizontal justified layout">
-            <div class="card-news-link" hidden$="[[!item.link]]"><a href="[[item.link]]" tabindex="-1"><paper-button raised ><span>Read More</span></paper-button></a></div>
-            <div class="card-share-link" hidden$="[[!item.link]]"><paper-button raised on-tap="_share" aria-label="Share"><iron-icon icon="share-alt"></iron-icon>&nbsp;<span>share</span></paper-button></div>
+            <div class="card-news-link" hidden$="[[!item.link]]"><a href="[[item.link]]" tabindex="-1">Read More</a></div>
+            <div class="card-share-link" hidden$="[[!item.link]]"><iron-icon icon="share-alt"></iron-icon>&nbsp;<a on-tap="_share" aria-label="Share"><span>share</span></a></div>
           </div>
         </div>
         <share-menu id="shareMenu" title="[[item.title]]" text="[[item.body]" url="[[item.link]]" via="University of Virginia Library" is-image="auto" copy-success-text="Text copied to clipboard!" copy-failed-text="Oh no! Couldn't copy the text automatically."></share-menu>
