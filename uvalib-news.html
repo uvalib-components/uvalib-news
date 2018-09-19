@@ -70,7 +70,7 @@
         }
       </style>
     </custom-style>
-    <uva-library path="news" items="{{news}}" filter="[[_filter]]"></uva-library>
+    <uva-library path="news" items="{{news}}" filter="[[_filter]]" sort-by="created" sort-order="desc"></uva-library>
     <template is="dom-repeat" items="[[news]]">
       <paper-card class="card-news-item">
         <div class="layout vertical justified">
