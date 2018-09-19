@@ -4,6 +4,7 @@
 <link rel="import" href="../paper-card/paper-card.html">
 <link rel="import" href="../share-menu/share-menu.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../uva-helper-libs/moment-timezone.html">
 
 <dom-module id="uvalib-news">
   <template>
@@ -62,6 +63,11 @@
         .card-share-link {
           text-align: right;
         }
+        .created {
+          font-style: italic;
+          opacity: .6;
+          padding-top: 10px;
+        }
       </style>
     </custom-style>
     <uva-library path="news" items="{{news}}" filter="[[_filter]]"></uva-library>
@@ -75,6 +81,7 @@
             <div class="card-news-link" hidden$="[[!item.link]]"><a href="[[item.link]]" tabindex="-1"><paper-button raised ><span>Read More</span></paper-button></a></div>
             <div class="card-share-link" hidden$="[[!item.link]]"><paper-button raised on-tap="_share" aria-label="Share"><iron-icon icon="share-alt"></iron-icon>&nbsp;<span>share</span></paper-button></div>
           </div>
+          <div class="created">Posted on [[_prettyCreated(item.created)]]</div>
         </div>
         <share-menu id="shareMenu" title="[[item.title]]" text="[[item.body]" url="[[item.link]]" via="University of Virginia Library" is-image="auto" copy-success-text="Text copied to clipboard!" copy-failed-text="Oh no! Couldn't copy the text automatically."></share-menu>
       </paper-card>
@@ -111,6 +118,9 @@
       }
       _share(){
         this.shadowRoot.querySelector('#shareMenu').share();
+      }
+      _prettyCreated(created){
+        return moment.unix(created).format('LL');
       }
     }
 
