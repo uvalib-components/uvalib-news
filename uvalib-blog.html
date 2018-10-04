@@ -38,7 +38,7 @@
       _filteredNews(news) {
         var n = (this.limit)? news.slice(0,this.limit): news;
         return n.map( x=>{
-          x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"");
+          x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"").replace(/\&hellip\;.*<\/p>/,"&hellip;</p>");
           return x; } );
       }
     }
