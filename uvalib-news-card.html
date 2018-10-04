@@ -14,7 +14,7 @@
           display: block;
         }
         .card-news-item {
-          padding: var(--uvalib-spacing-unit);
+/*          padding: var(--uvalib-spacing-unit); */
           max-width: 540px;
           margin-left: var(--uvalib-spacing-unit);
           margin-right: var(--uvalib-spacing-unit);
@@ -59,13 +59,15 @@
       </style>
     </custom-style>
 
-    <paper-card class="card-news-item">
-      <div class="layout vertical justified">
-        <div class="card-news-source" hidden$="[[!newsItem.source]]">[[newsItem.source]]</div>
-        <div class="card-news-title" hidden$="[[!newsItem.title]]">[[newsItem.title]]</div>
-        <div class="card-news-copy" hidden$="[[!newsItem.body]]" inner-h-t-m-l="[[newsItem.body]]"></div>
-        <div class="card-news-link" hidden$="[[!newsItem.link]]"><a href="[[newsItem.link]]" aria-label$="[[newsItem.title]]" tabindex="-1">Go to article</a></div>
-        <div class="created">Posted on [[_prettyCreated(newsItem.created)]]</div>
+    <paper-card class="card-news-item" image="[[image]]">
+      <div class="card-content">
+        <div class="layout vertical justified">
+          <div class="card-news-source" hidden$="[[!newsItem.source]]">[[newsItem.source]]</div>
+          <div class="card-news-title" hidden$="[[!newsItem.title]]">[[newsItem.title]]</div>
+          <div class="card-news-copy" hidden$="[[!newsItem.body]]" inner-h-t-m-l="[[newsItem.body]]"></div>
+          <div class="card-news-link" hidden$="[[!newsItem.link]]"><a href="[[newsItem.link]]" aria-label$="[[newsItem.title]]" tabindex="-1">Go to article</a></div>
+          <div class="created">Posted on [[_prettyCreated(newsItem.created)]]</div>
+        </div>
       </div>
     </paper-card>
 
@@ -84,7 +86,8 @@
       static get is() { return 'uvalib-news-card'; }
       static get properties() {
         return {
-          newsItem: Object
+          newsItem: Object,
+          image: String
         };
       }
       _prettyCreated(created){
