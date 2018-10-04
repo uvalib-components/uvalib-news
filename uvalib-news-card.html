@@ -65,7 +65,7 @@
           <div class="card-news-source" hidden$="[[!newsItem.source]]">[[newsItem.source]]</div>
           <div class="card-news-title" hidden$="[[!newsItem.title]]">[[newsItem.title]]</div>
           <div class="card-news-copy" hidden$="[[!newsItem.body]]" inner-h-t-m-l="[[newsItem.body]]"></div>
-          <div class="card-news-link" hidden$="[[!newsItem.link]]"><a href="[[newsItem.link]]" aria-label$="[[newsItem.title]]" tabindex="-1">Go to article</a></div>
+          <div class="card-news-link" hidden$="[[!newsItem.link]]"><a href="[[newsItem.link]]" aria-label$="[[newsItem.title]]" tabindex="-1">[[linkText]]</a></div>
           <div class="created">Posted on [[_prettyCreated(newsItem.created)]]</div>
         </div>
       </div>
@@ -87,7 +87,11 @@
       static get properties() {
         return {
           newsItem: Object,
-          image: String
+          image: String,
+          linkText: {
+            type:String,
+            value: "Go to article"
+          }
         };
       }
       _prettyCreated(created){

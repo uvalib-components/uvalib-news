@@ -14,7 +14,7 @@
     </custom-style>
     <uva-library path="newsblog" items="{{news}}" sort-by="created" sort-order="desc"></uva-library>
     <template is="dom-repeat" items="[[_filteredNews(news)]]">
-      <uvalib-news-card image="https://news.library.virginia.edu/files/2018/08/DSC_1219.jpg" news-item="[[item]]"></uvalib-news-card>
+      <uvalib-news-card link-text="Read More" image="https://news.library.virginia.edu/files/2018/08/DSC_1219.jpg" news-item="[[item]]"></uvalib-news-card>
     </template>
   </template>
 
@@ -36,7 +36,6 @@
       }
       _filteredNews(news) {
         return news.map( x=>{
-          x.source="UVA Library News Blog";
           x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"");
           return x; } );
       }
