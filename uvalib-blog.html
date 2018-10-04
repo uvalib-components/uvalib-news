@@ -31,11 +31,13 @@
       static get is() { return 'uvalib-blog'; }
       static get properties() {
         return {
-          news: Array
+          news: Array,
+          limit: Number
         };
       }
       _filteredNews(news) {
-        return news.map( x=>{
+        var n = (this.limit)? news.slice(0,this.limit): news;
+        return n.map( x=>{
           x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"");
           return x; } );
       }
