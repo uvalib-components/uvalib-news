@@ -14,7 +14,7 @@
     </custom-style>
     <uva-library path="newsblog" items="{{news}}" sort-by="created" sort-order="desc"></uva-library>
     <template is="dom-repeat" items="[[_filteredNews(news,limit)]]">
-      <uvalib-news-card link-text="Read More" image="https://news.library.virginia.edu/files/2018/08/DSC_1219.jpg" news-item="[[item]]"></uvalib-news-card>
+      <uvalib-news-card link-text="Read More" image="[[item.image]]" news-item="[[item]]"></uvalib-news-card>
     </template>
   </template>
 
