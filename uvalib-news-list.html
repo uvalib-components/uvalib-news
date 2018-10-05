@@ -44,7 +44,7 @@
             computed: '_mkFilter(association)',
             notify: true
           },
-          limit: Number
+          limit: Number,
         };
       }
       _mkFilter(ass){
@@ -66,6 +66,11 @@
         var txt = document.createElement("textarea");
         txt.innerHTML = html;
         return txt.value;
+      }
+      _strip(html) {
+        var tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || "";
       }
     }
 
