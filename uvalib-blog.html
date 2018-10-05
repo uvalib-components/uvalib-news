@@ -13,7 +13,7 @@
       </style>
     </custom-style>
     <uva-library path="newsblog" items="{{news}}" sort-by="created" sort-order="desc"></uva-library>
-    <template is="dom-repeat" items="[[_filteredNews(news)]]">
+    <template is="dom-repeat" items="[[_filteredNews(news,limit)]]">
       <uvalib-news-card link-text="Read More" image="https://news.library.virginia.edu/files/2018/08/DSC_1219.jpg" news-item="[[item]]"></uvalib-news-card>
     </template>
   </template>
@@ -25,7 +25,7 @@
      *
      * @customElement
      * @polymer
-     * @demo demo/index.html
+     * @demo demo/blog.html
      */
     class UvalibBlog extends Polymer.Element {
       static get is() { return 'uvalib-blog'; }
@@ -36,10 +36,12 @@
         };
       }
       _filteredNews(news) {
-        var n = (this.limit)? news.slice(0,this.limit): news;
-        return n.map( x=>{
-          x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"").replace(/\&hellip\;.*<\/p>/,"&hellip;</p>");
-          return x; } );
+        if (news && news.length) {
+          var n = (this.limit)? news.slice(0,this.limit): news;
+          return n.map( x=>{
+            x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"").replace(/\&hellip\;.*<\/p>/,"&hellip;</p>");
+            return x; } );
+        }
       }
     }
 
