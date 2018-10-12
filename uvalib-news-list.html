@@ -6,9 +6,26 @@
   <template>
     <custom-style>
       <style include="uvalib-theme">
-        :host {
-          display: block;
-        }
+      :host {
+        display: block;
+        font-size: var(--uvalib-card-font-size, --uvalib-main-font-size-unit);
+      }
+      .news-item, .title { line-height: 1.15 !important;}
+      .source {
+        @apply --h5;
+        @apply --uvalib-news-source;
+        /* margin-bottom: var(--uvalib-spacing-unit); */
+        color: var(--uvalib-news-item-source-color, var(--uvalib-main-rotunda-orange));
+      }
+      .title {
+        @apply --h4;
+        @apply --uvalib-news-title;
+      }
+      .preview p {
+        margin-top: 0;
+        margin-bottom: calc(var(--uvalib-spacing-unit)*2);
+        @apply --uvalib-news-copy;
+      }
       </style>
     </custom-style>
     <uva-library path="news" items="{{news}}" filter="[[_filter]]" sort-by="created" sort-order="desc"></uva-library>
