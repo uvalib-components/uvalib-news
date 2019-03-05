@@ -10,12 +10,21 @@
         :host {
           display: block;
         }
+        #container {
+          display: grid;
+          grid-template-rows: auto;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 1em;
+          margin-bottom: 2rem;
+        }
       </style>
     </custom-style>
     <uva-library path="news" items="{{news}}" filter="[[_filter]]" sort-by="created" sort-order="desc"></uva-library>
-    <template is="dom-repeat" items="[[news]]">
-      <uvalib-news-card news-item="[[item]]"></uvalib-news-card>
-    </template>
+    <div id="container">
+      <template is="dom-repeat" items="[[news]]">
+        <uvalib-news-card news-item="[[item]]"></uvalib-news-card>
+      </template>
+    </div>
   </template>
 
   <script>
