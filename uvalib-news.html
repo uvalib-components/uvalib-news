@@ -10,12 +10,15 @@
         :host {
           display: block;
         }
-        #container {
-          display: grid;
-          grid-template-rows: auto;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 1em;
-          margin-bottom: 2rem;
+        /* large */
+        @media screen and (min-width: 600px) {
+          #container {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1em;
+            margin-bottom: 2rem;
+          }
         }
       </style>
     </custom-style>
