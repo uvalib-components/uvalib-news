@@ -24,7 +24,7 @@
     </custom-style>
     <uva-library path="news" items="{{news}}" filter="[[_filter]]" sort-by="created" sort-order="desc"></uva-library>
     <div id="container">
-      <template is="dom-repeat" items="[[news]]">
+      <template is="dom-repeat" items="[[_limit(news,limit)]]">
         <uvalib-news-card news-item="[[item]]"></uvalib-news-card>
       </template>
     </div>
@@ -44,6 +44,7 @@
       static get properties() {
         return {
           news: Array,
+          limit: Number,
           association: {
             type:String,
             notify: true,
@@ -57,6 +58,10 @@
       }
       _mkFilter(i){
         return {association:this.association};
+      }
+      _limit(news,limit){
+        if (news && news.length>0)
+        return (limit)? news.slice(0,this.limit): news;
       }
       _share(){
         this.shadowRoot.querySelector('#shareMenu').share();
