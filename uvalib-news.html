@@ -2,6 +2,7 @@
 <link rel="import" href="../uvalib-theme/uvalib-theme.html">
 <link rel="import" href="../uva-models/uva-library.html">
 <link rel="import" href="uvalib-news-card.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <dom-module id="uvalib-news">
   <template>
@@ -27,6 +28,9 @@
       <template is="dom-repeat" items="[[_limit(news,limit)]]">
         <uvalib-news-card news-item="[[item]]"></uvalib-news-card>
       </template>
+      <template is="dom-if" if="[[_and(showMoreLink,limit)]]">
+        <paper-button on-tap="_noLimit">Show More</paper-button>
+      </template>
     </div>
   </template>
 
@@ -45,6 +49,7 @@
         return {
           news: Array,
           limit: Number,
+          showMoreLink: Boolean,
           association: {
             type:String,
             notify: true,
@@ -55,6 +60,12 @@
             notify: true
           }
         };
+      }
+      _noLimit(){
+        this.limit = null;
+      }
+      _and(a,b){
+        return a && b;
       }
       _mkFilter(i){
         return {association:this.association};
