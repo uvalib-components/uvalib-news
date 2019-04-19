@@ -5,6 +5,7 @@
 <link rel="import" href="../share-menu/share-menu.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../uva-helper-libs/moment-timezone.html">
+<link rel="import" href="../marked-element/marked-element.html">
 
 <dom-module id="uvalib-news-card">
   <template>
@@ -65,7 +66,11 @@
         <div class="layout vertical justified">
           <div class="card-news-source" hidden$="[[!newsItem.source]]">[[newsItem.source]]</div>
           <div class="card-news-title" hidden$="[[!newsItem.title]]">[[newsItem.title]]</div>
-          <div class="card-news-copy" hidden$="[[!newsItem.body]]" inner-h-t-m-l="[[newsItem.body]]"></div>
+          <div class="card-news-copy" hidden$="[[!newsItem.body]]">
+            <marked-element markdown="[[newsItem.body]]">
+              <div slot="markdown-html" class="markdown-html custom"></div>
+            </marked-element>
+          </div>
           <div class="card-news-link" hidden$="[[!newsItem.link]]"><a href="[[newsItem.link]]" aria-label$="[[newsItem.title]]" tabindex="-1">[[linkText]]</a></div>
           <div class="created">Posted on [[_prettyCreated(newsItem.created)]]</div>
         </div>
