@@ -59,10 +59,17 @@
             type: Number,
             value: 200
           },
+          category: String
         };
       }
       _filteredNews(news) {
         if (news && news.length) {
+          console.log(news);
+          if (this.category) {
+            news = news.filter(n=>{
+              return n.categories.filter(c=> c.id === this.category).length > 0;
+            });
+          }
           var n = (this.limit)? news.slice(0,this.limit): news;
           return n.map( x=>{
             x.body=x.excerpt.replace(/<div class="sharedaddy.*/,"").replace(/\&hellip\;.*<\/p>/,"&hellip;</p>");
