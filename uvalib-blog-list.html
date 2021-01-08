@@ -67,7 +67,16 @@
           console.log(news);
           if (this.category) {
             news = news.filter(n=>{
-              return n.categories.filter(c=> c.id === this.category).length > 0;
+              console.log(n)
+              if (n.tags) {
+                console.log(n.tags)
+                return n.tags.filter(c=> c.id === this.category).length > 0;
+              }
+              if (n.categories) {
+                console.log(n.categories)
+                return n.categories.filter(c=> c.id === this.category).length > 0;
+              }
+              return false;
             });
           }
           var n = (this.limit)? news.slice(0,this.limit): news;
